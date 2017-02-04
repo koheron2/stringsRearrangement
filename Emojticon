@@ -1,0 +1,64 @@
+//description of this challenge is below the code:
+
+function Emojticon(message, emoticons) {
+    var splitMsg = message.split(" ");
+    for (i = 0; i < splitMsg.length; i++) {
+        var msgEmo = "[" + splitMsg[i] + "]";
+        for (j = 0; j < emoticons.length; j += 1) {
+            var emo = emoticons[j];
+        if (splitMsg[i] === emo) {
+            splitMsg[i] = msgEmo;
+        }
+        }
+    }
+    var newMsg = splitMsg.join(" ");
+    return newMsg;
+}
+
+
+/**
+
+Sometimes, to make an on-line conversation more expressive, we use some smileys (or emoticons) in our messages. What actually happens is this: we use some notations that represent emoticons, and the chat system converts them into images one a message is sent.
+
+To replace a keyword with an emoticon, the system needs to correctly detect it first. Your mission is to write a function that will detect emoticons in a message. Given a message and emoticons, the function should detect all emotions in the message and enclose each of them in a pair of brackets ([ and ]).
+Example
+
+    For message = "I love you <3" and emoticons = ["<3", ":)", "^_^"],
+    the output should be
+    Emojticon(message) = "I love you [<3]".
+
+    <3 in the given message is, indeed, an emoticon.
+
+    For message = "I love you because 1<3" and
+    emoticons = ["<3", ":)", "^_^"], the output should be
+    Emojticon(message) = "I love you because 1<3".
+
+    Here <3 is not an emoticon, so it shouldn't be replaced.
+
+Input/Output
+
+    [time limit] 4000ms (js)
+
+    [input] string message
+
+    A messages in the conversation.
+
+    Constraints
+    1 ≤ message.length ≤ 100.
+
+    [input] array.string emoticons
+
+    A set of emoticons that should be replaced. It is guaranteed that the emoticons are unique, and that no emoticon is a substring of another emoticon.
+
+    Constraints:
+    1 ≤ emoticons.length ≤ 10,
+    1 ≤ emoticons[i].length ≤ 5.
+
+    [output] string
+
+    The message with emoticons enclosed in brackets.
+
+
+
+
+      
