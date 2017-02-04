@@ -1,0 +1,42 @@
+function printBestStudent(students) {
+  var bestScores = {};
+
+  for (var s = 0; s < students.length; s++) {
+    var student = students[s];
+
+    for (var j = 0; j < student.grades.length; j++) {
+      var grade = student.grades[j];
+      if (bestScores[grade.id] === undefined) {
+        bestScores[grade.id] = { name: student.name, score: grade.score};
+      } else if (grade.score > bestScores[grade.id].score) {
+        bestScores[grade.id] = { name: student.name, score: grade.score};
+      }
+    }
+  }
+  for (var key in bestScores) {
+    console.log("Test " + key + ": " + bestScores[key].name);
+}
+
+  }
+
+
+
+
+var students3 = [
+  {
+    name : "Anthony",
+    id : 0,
+    grades : [{ id : 0, score : 84},{ id : 1, score : 20},{ id : 2, score : 80}]
+  }, {
+    name : "Winnie",
+    id : 1,
+    grades : [{ id : 0, score : 62},{ id : 1, score : 56},{ id : 2, score : 100}]
+  }, {
+    name : "Pawandeep",
+    id : 2,
+    grades : [{ id : 0, score : 79},{ id : 1, score : 92},{ id : 2, score : 49}]
+  }
+];
+
+
+printBestStudent(students3);
