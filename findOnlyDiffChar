@@ -1,0 +1,64 @@
+//description of this challenge appears below code:
+
+
+function findOnlyDiffChar(a, b) {
+    var checked = [];
+
+    for (i = 0; i < a.length; i++) {
+      var Count1 = 0;
+      var Count2 = 0;
+
+
+      if (checked.indexOf(a[i]) === -1) {
+            checked.push(a[i]);
+            //return checked;
+            for (z = 0; z < b.length; z++) {
+              if (a[i] === b[z]) {
+                Count2 += 1;
+              }
+            }
+            for (j = i; j < a.length; j++) {
+              if (a[i] === a[j]) {
+                Count1 += 1;
+                  if (Count1 > Count2) {
+                    return a[i];
+                  }
+              }
+            }
+
+          }
+        }
+      };
+      
+      /**
+      You created an awesome array a, but some hooligan removed one element from it, shuffled it and returned it to you as array b.
+
+Given arrays a and b, your task is to figure out what element was removed from a.
+
+Example
+
+For a =[1, 2, 3, 4] and b = [3, 1, 2],
+the output should be
+findOnlyDiffChar(a, b) = 4.
+
+    [time limit] 4000ms (js)
+
+    [input] array.integer a
+
+    Constraints:
+    1 ≤ a.length ≤ 4000,
+    1 ≤ a[i] ≤ 1000.
+
+    [input] array.integer b
+
+    Array consisting of exactly the same elements as a, except for a single missing element.
+
+    Constraints:
+    b.length = a.length - 1.
+
+    [output] integer
+
+    The missing element.
+
+**/
+
