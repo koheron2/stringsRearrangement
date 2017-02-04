@@ -1,7 +1,29 @@
+/**this function takes an array of objects, each containing a students name, id nuber, and grades on three tests. The grades array is an array of objects, and within each object is a tests id number and the students score for that test. The function ultimately returns a string that contains the test id: student name for the highest score for each test.**/
+
+
+
+
+var students3 = [
+  {
+    name : "Anthony",
+    id : 0,
+    grades : [{ id : 0, score : 84},{ id : 1, score : 20},{ id : 2, score : 80}]
+  }, {
+    name : "Winnie",
+    id : 1,
+    grades : [{ id : 0, score : 62},{ id : 1, score : 56},{ id : 2, score : 100}]
+  }, {
+    name : "Pawandeep",
+    id : 2,
+    grades : [{ id : 0, score : 79},{ id : 1, score : 92},{ id : 2, score : 49}]
+  }
+];
+
 function printBestStudent(students) {
   var bestScores = {};
 
-  for (var s = 0; s < students.length; s++) {
+  
+for (var s = 0; s < students.length; s++) {
     var student = students[s];
 
     for (var j = 0; j < student.grades.length; j++) {
@@ -39,4 +61,4 @@ var students3 = [
 ];
 
 
-printBestStudent(students3);
+
