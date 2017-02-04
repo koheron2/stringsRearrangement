@@ -1,0 +1,138 @@
+/**Description of Challenge:
+Given an array of equal-length strings, check if it is possible to rearrange the strings in such a way that after the rearrangement the strings at consecutive positions would differ by exactly one character.
+
+Example
+
+    For inputArray = ["aba", "bbb", "bab"], the output should be
+
+    stringsRearrangement(inputArray) = false;
+    For inputArray = ["ab", "bb", "aa"], the output should be
+
+    stringsRearrangement(inputArray) = true.
+
+Input/Output
+
+    [time limit] 4000ms (js)
+
+    [input] array.string inputArray
+
+    A non-empty array of strings of lowercase letters.
+
+    Constraints:
+
+    2 ≤ inputArray.length ≤ 10,
+
+    1 ≤ inputArray[i].length ≤ 15.
+
+    [output] boolean
+    **/
+
+
+function stringsRearrangement(inputArray) {
+    var alpha = "abcdefghijklmnopqrstuvwxyz";
+    var twinCount = 0;
+    var twinAry = [];
+    if ((inputArray.length < 2) || (inputArray.length > 10)) {
+        return false;
+    }
+       var matches = {};
+  for (i = 0; i < inputArray.length; i++) {
+      if ((inputArray[i].length === 0) || (inputArray[i].length > 15)) {
+          return false;
+      }
+    var intKey = i.toString();
+      for (j = i + 1; j < inputArray.length; j++) {
+    var intKey1 = j.toString();
+    var baseString = inputArray[0];
+    var count = 0;
+      for (z = 0; z < baseString.length; z++) {
+        if ((alpha.indexOf(baseString[z])) === -1) {
+              return false;
+          }
+        if (count > 1) {
+          break;
+        } else if (inputArray[i][z] !== inputArray[j][z]) {
+          count += 1;
+        }
+      }
+
+
+        if (count === 1) {
+              if (matches[intKey] !== undefined) {
+                var val = matches[intKey];
+                val.push(j);
+                matches[intKey] = val;
+            } else {
+            matches[intKey] = [j];
+            }
+              if (matches[intKey1] !== undefined) {
+                var val1 = matches[intKey1];
+                val1.push(i);
+                matches[intKey1] = val1;
+              } else {
+                matches[intKey1] = [i];
+              }
+            }
+          }
+        }
+//return matches;
+
+     if (matches === undefined) {
+        return false;
+      }
+
+      var keyAry = Object.keys(matches);
+      if (keyAry.length !== inputArray.length) {
+        return false;
+      }
+//return keyAry;
+//return keyAry.length;
+//return inputArray.length;
+
+  for (m = 0; m < keyAry.length; m++) {
+    for (n = m + 1; n < keyAry.length; n++) {
+      if (matches[keyAry[m]].toString() === matches[keyAry[n]].toString()) {
+          if (twinAry.indexOf(matches[keyAry[m]]) === -1) {
+            twinAry.push(matches[keyAry[m]].toString());
+            twinCount += 2
+
+        }
+      }
+    }
+  }
+  //return twinCount;
+
+  var soloAry = [];
+    for (p = 0; p < keyAry.length; p++) {
+      var finKey = keyAry[p];
+      var finVal = matches[finKey];
+      if (finVal.length === 1) {
+        soloAry.push(p)
+    }
+  }
+//return soloAry;
+    if (inputArray.length <= 3) {
+    if (((inputArray.length % 2 === 0) && (twinCount > inputArray.length/2)) || (twinCount > (inputArray.length/2 + 1))) {
+            return false;
+            }
+          }
+
+
+//((soloAry.length === 2) && (twinCount >= (inputArray.length/2 - 1))) || ((soloAry.length === 1) && (twinCount >= inputArray.length/2)))
+
+        if (soloAry.length > 2) {
+            return false
+          }  else if ((soloAry.length === 1) && (twinCount >= inputArray.length/2)) {
+              return false
+          } else if (soloAry.length === 2) {
+              if ((inputArray.length > 3) && (twinCount >= (inputArray.length/2 - 1))) {
+                return false;
+              } else if ((inputArray.length > 3) || ((inputArray.length === 2) || ((inputArray.length === 3) && ((matches[soloAry[0].toString()])[0] !== (soloAry[1]))))) {
+                return true;
+              } else {
+                return false;
+              }
+              }
+              return true;
+
+}
