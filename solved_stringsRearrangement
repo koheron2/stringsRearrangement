@@ -135,4 +135,4 @@ function stringsRearrangement(inputArray) {
               }
               return true;
 
-}
+ }
